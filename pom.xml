@@ -12,6 +12,8 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<java.version>17</java.version>
 		<maven-compiler-pluging.version>3.11.0</maven-compiler-pluging.version>
+		<spring-framework.version>6.0.12</spring-framework.version>
+		<servlet.version>6.0.0</servlet.version>
 	</properties>
 	<build>
 		<plugins>
@@ -26,4 +28,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring-framework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!-- Spring MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<!-- Servlet API -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
