@@ -14,10 +14,13 @@
 		<maven-compiler-pluging.version>3.11.0</maven-compiler-pluging.version>
 		<spring-framework.version>6.0.12</spring-framework.version>
 		<servlet.version>6.0.0</servlet.version>
+		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
 	</properties>
 	<build>
 		<plugins>
 			<plugin>
+				<!--
+				https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-pluging.version}</version>
@@ -51,6 +54,17 @@
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>${servlet.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<!-- Thymeleaf -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring6</artifactId>
+			<version>${thymeleaf.version}</version>
 		</dependency>
 	</dependencies>
 </project>
