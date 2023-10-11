@@ -15,6 +15,7 @@
 		<spring-framework.version>6.0.12</spring-framework.version>
 		<servlet.version>6.0.0</servlet.version>
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+		<lombok.version>1.18.30</lombok.version>
 	</properties>
 	<build>
 		<plugins>
@@ -65,6 +66,12 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring6</artifactId>
 			<version>${thymeleaf.version}</version>
+		</dependency>
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 		</dependency>
 	</dependencies>
 </project>
