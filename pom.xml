@@ -12,10 +12,11 @@
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<java.version>17</java.version>
 		<maven-compiler-pluging.version>3.11.0</maven-compiler-pluging.version>
-		<spring-framework.version>6.0.12</spring-framework.version>
+		<spring-framework.version>6.0.13</spring-framework.version>
 		<servlet.version>6.0.0</servlet.version>
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
 		<lombok.version>1.18.30</lombok.version>
+		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 	</properties>
 	<build>
 		<plugins>
@@ -72,6 +73,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 	</dependencies>
 </project>
