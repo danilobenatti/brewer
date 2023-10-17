@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -10,6 +10,8 @@
 	<h1>Hello! Thymeleaf is on!</h1>
 </body>
 <form method="post">
+	<span th:text="${message}"></span>
+	<br>
 	<label for="sku">SKU</label>
 	<input type="text" id="sku" name="sku">
 	<br>
