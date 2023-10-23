@@ -15,19 +15,18 @@ import jakarta.validation.Valid;
 public class BeersController {
 	
 	@GetMapping(path = "/beers/starting")
-	public String start() {
+	public String start(Beer beer) {
 		return "beers/BeersRegistration";
 	}
 	
 	@PostMapping(path = "/beers/starting")
-	public String register(@Valid Beer beer, BindingResult result,
-		Model model, RedirectAttributes attributes) {
+	public String register(@Valid Beer beer, BindingResult result, Model model,
+		RedirectAttributes attributes) {
+		String attributeName = "message";
 		if (result.hasErrors()) {
-			model.addAttribute("message", "Error in form.");
-			System.out.println(">>> contains errors");
-			return "beers/BeersRegistration";
+			return start(beer);
 		}
-		attributes.addFlashAttribute("message", "Beer save with success.");
+		attributes.addFlashAttribute(attributeName, "Beer save with success.");
 		System.out.println(">>> register SKU: " + beer.getSku());
 		return "redirect:/beers/starting";
 	}

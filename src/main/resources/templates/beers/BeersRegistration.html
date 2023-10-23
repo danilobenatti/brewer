@@ -9,12 +9,39 @@
 <body>
 	<h1>Hello! Thymeleaf is on!</h1>
 </body>
-<form method="post">
-	<span th:text="${message}"></span>
-	<br>
-	<label for="sku">SKU</label>
-	<input type="text" id="sku" name="sku">
-	<br>
+<div th:each="error : ${#fields.detailedErrors('${beer.sku}')}"> <!-- ${beer.*} -->
+	<span th:text="${error.message}"></span>
+</div>
+<div th:each="error : ${#fields.detailedErrors('${beer.name}')}">
+	<span th:text="${error.message}"></span>
+</div>
+<div th:each="error : ${#fields.detailedErrors('${beer.description}')}">
+	<span th:text="${error.message}"></span>
+</div>
+<form method="post" th:object="${beer}">
+	<span th:text="${message}">Errors!</span>
+	<div>
+		<label for="sku">SKU</label>
+		<input type="text" id="sku" th:field="*{sku}" placeholder="SKU Code">
+		<p th:if="${#fields.hasErrors('sku')}" th:errors="*{sku}">
+	</div>
+	<div>
+		<label for="name">Name</label>
+		<input type="text" id="name" th:field="*{name}" placeholder="Beer name" />
+		<ul>
+			<li th:each="error : ${#fields.errors('name')}" th:text="${error}" />
+		</ul>
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+	</div>
+	<div>
+		<label for="description">Description</label>
+		<br />
+		<textarea id="description" th:field="*{description}" rows="4" cols="40"
+			placeholder="Beer description"></textarea>
+		<ul>
+			<li th:each="error : ${#fields.errors('description')}" th:text="${error}" />
+		</ul>
+	</div>
 	<input type="submit" value="save">
 </form>
 
