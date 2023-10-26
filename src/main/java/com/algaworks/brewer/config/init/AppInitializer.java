@@ -1,5 +1,6 @@
 package com.algaworks.brewer.config.init;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -7,6 +8,7 @@ import com.algaworks.brewer.config.WebConfig;
 
 import jakarta.servlet.Filter;
 
+@Configuration
 public class AppInitializer
 	extends AbstractAnnotationConfigDispatcherServletInitializer {
 	
@@ -22,7 +24,7 @@ public class AppInitializer
 	
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/" };
+		return new String[] { "/*" };
 	}
 	
 	@Override

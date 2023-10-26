@@ -1,60 +1,56 @@
 package com.algaworks.brewer.config;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.spring6.ISpringTemplateEngine;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.algaworks.brewer.controller.BeersController;
 
 @Configuration
-@ComponentScan(basePackageClasses = { BeersController.class })
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurationSupport
-	implements ApplicationContextAware {
+@ComponentScan(basePackageClasses = { BeersController.class })
+public class WebConfig implements WebMvcConfigurer {
 	
 	private ApplicationContext applicationContext;
 	
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) {
-		this.applicationContext = applicationContext;
-	}
-	
-	private ITemplateResolver templateResolver() {
-		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-		resolver.setApplicationContext(applicationContext);
-		resolver.setPrefix("classpath:/templates/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode(TemplateMode.HTML);
-		return resolver;
+	@Bean
+	public SpringResourceTemplateResolver templateResolver() {
+		var templateResolver = new SpringResourceTemplateResolver();
+		templateResolver.setApplicationContext(applicationContext);
+		templateResolver.setPrefix("/WEB-INF/templates/");
+		templateResolver.setSuffix(".html");
+		templateResolver.setTemplateMode(TemplateMode.HTML);
+		return templateResolver;
 	}
 	
 	@Bean
-	public TemplateEngine templateEngine() {
-		SpringTemplateEngine engine = new SpringTemplateEngine();
-		engine.setEnableSpringELCompiler(true);
-		engine.setTemplateResolver(templateResolver());
-		return engine;
+	public SpringTemplateEngine templateEngine() {
+		var templateEngine = new SpringTemplateEngine();
+		templateEngine.setEnableSpringELCompiler(true);
+		templateEngine.setTemplateResolver(templateResolver());
+		return templateEngine;
 	}
 	
 	@Bean
 	public ViewResolver viewResolver() {
-		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver
-			.setTemplateEngine((ISpringTemplateEngine) templateEngine());
+		var viewResolver = new ThymeleafViewResolver();
+		viewResolver.setTemplateEngine(templateEngine());
 		viewResolver.setCharacterEncoding("UTF-8");
 		return viewResolver;
 	}
 	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**")
+			.addResourceLocations("classpath:/static/");
+	}
 }
