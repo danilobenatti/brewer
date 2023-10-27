@@ -31,9 +31,4 @@ public class BeersController {
 		return "redirect:/beers/starting";
 	}
 	
-	@GetMapping(path = "/beers/create")
-	public String create() {
-		return "beers/productRegistration";
-	}
-	
 }
