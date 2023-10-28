@@ -15,6 +15,7 @@
 		<spring-framework.version>6.0.13</spring-framework.version>
 		<servlet.version>6.0.0</servlet.version>
 		<thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>3.3.0</thymeleaf-layout-dialect.version>
 		<lombok.version>1.18.30</lombok.version>
 		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 	</properties>
@@ -67,6 +68,11 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring6</artifactId>
 			<version>${thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		<!-- Lombok -->
 		<dependency>

@@ -15,6 +15,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 import com.algaworks.brewer.controller.BeersController;
 
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackageClasses = { BeersController.class })
@@ -37,6 +39,7 @@ public class WebConfig implements WebMvcConfigurer {
 		var templateEngine = new SpringTemplateEngine();
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.setTemplateResolver(templateResolver());
+		templateEngine.addDialect(new LayoutDialect());
 		return templateEngine;
 	}
 	
@@ -53,4 +56,10 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/**")
 			.addResourceLocations("classpath:/static/");
 	}
+	
+	@Bean
+	public LayoutDialect layoutDialect() {
+		return new LayoutDialect();
+	}
+	
 }
