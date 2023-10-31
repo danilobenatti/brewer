@@ -18,11 +18,11 @@
 		<div class="container-fluid">
 			<form method="post" th:object="${beer}" class="form-vertical  js-form-loading">
 				<div class="row">
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-sku">SKU*</label>
 						<input id="input-beer-sku" type="text" class="form-control" />
 					</div>
-					<div class="col-sm-9 form-group">
+					<div class="col-sm-9  form-group">
 						<label for="input-beer-name">Name*</label>
 						<input id="input-beer-name" type="text" class="form-control" />
 					</div>
@@ -32,33 +32,33 @@
 					<textarea id="input-beer-description" rows="3" class="form-control"></textarea>
 				</div>
 				<div class="row">
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-style">Style*</label>
 						<select id="input-beer-style" type="text" class="form-control">
 							<option value="">Select style</option>
 						</select>
 					</div>
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-flavor">Flavor*</label>
 						<select id="input-beer-flavor" type="text" class="form-control">
 							<option value="">Select flavor</option>
 						</select>
 					</div>
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-alcohol-content">Alcohol content*</label>
 						<div class="input-group">
-							<input id="input-beer-alcohol-content" type="text" class="form-control" />
+							<input id="input-beer-alcohol-content" type="text" class="form-control  js-decimal" />
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-sm-6 form-group">
+					<div class="col-lg-3  col-sm-6  form-group">
 						<label for="input-beer-origin">Origin</label>
 						<div>
-							<div class="radio radio-inline">
+							<div class="radio  radio-inline">
 								<input id="radio_national" type="radio" name="origin" />
 								<label for="radio_national">National</label>
 							</div>
-							<div class="radio radio-inline">
+							<div class="radio  radio-inline">
 								<input id="radio_international" type="radio" name="origin" />
 								<label for="radio_international">International</label>
 							</div>
@@ -66,23 +66,23 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-price">Price*</label>
 						<div class="input-group">
 							<div class="input-group-addon">R$</div>
-							<input id="input-beer-price" type="text" class="form-control" />
+							<input id="input-beer-price" type="text" class="form-control  js-decimal" />
 						</div>
 					</div>
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-commission">Commission*</label>
 						<div class="input-group">
-							<input id="input-beer-commission" type="text" class="form-control" />
+							<input id="input-beer-commission" type="text" class="form-control  js-decimal" />
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
-					<div class="col-sm-3 form-group">
+					<div class="col-sm-3  form-group">
 						<label for="input-beer-stock">Stock*</label>
-						<input id="input-beer-stock" type="text" class="form-control" />
+						<input id="input-beer-stock" type="text" class="form-control  js-plain" />
 					</div>
 				</div>
 				<div class="form-group">
